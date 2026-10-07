@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Projects | Shree Gateemaan Builders</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container navbar">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="logo.jpeg" alt="Shree Gateemaan Logo" class="logo-img" onerror="this.style.display='none'">
+          <div class="logo-text">श्री <span>Gateemaan</span></div>
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="btn btn-primary" style="padding: 8px 18px;">Enquire Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="section-padding">
+    <div class="container">
+      
+      <!-- 1. FEATURED PROPERTY SHOWCASE (4-5 Photos Carousel ke saath) -->
+      <div class="section-title">
+        <h2>Flagship Project Showcase</h2>
+        <p>Explore our premium architectural masterpiece</p>
+      </div>
+
+      <div class="featured-showcase">
+        <div class="carousel-container">
+          <!-- Slide 1 -->
+          <div class="carousel-slide active">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Slide 1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="Slide 2">
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="Slide 3">
+          </div>
+          <!-- Slide 4 -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Slide 4">
+          </div>
+
+          <!-- Carousel Controls -->
+          <button class="carousel-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+          <div class="carousel-indicators" id="carouselDots"></div>
+        </div>
+
+        <!-- Project Details under Carousel -->
+        <div class="featured-details">
+          <span class="badge badge-featured">Flagship Villa Project</span>
+          <h2 style="font-size: 1.8rem; color: var(--primary-color); margin-bottom: 5px;">Rudraksh Grand Duplex Villas</h2>
+          <p class="location-tag" style="font-size: 1rem;"><i class="fas fa-map-marker-alt" style="color:var(--accent-color);"></i> Aaraji no: 688, Rudraksh Colony, Near Om Vilas, Lodhan, Chandmaari, Varanasi</p>
+          <p style="margin-top: 10px; color: var(--text-dark);">
+            An exclusive enclave of luxury duplex homes designed for elevated living. Built with seismic-resistant RCC frames, premium teak fittings, private car parking, and round-the-clock water and power infrastructure.
+          </p>
+          <div class="amenities-list">
+            <span class="amenity-chip"><i class="fas fa-check"></i> 3 BHK Duplex Configuration</span>
+            <span class="amenity-chip"><i class="fas fa-check"></i> Gated Community Security</span>
+            <span class="amenity-chip"><i class="fas fa-check"></i> 30 ft Wide Internal Roads</span>
+            <span class="amenity-chip"><i class="fas fa-check"></i> Dedicated Green Space</span>
+          </div>
+          <div style="margin-top: 20px;">
+            <a href="contact.html" class="btn btn-primary">Book a Site Inspection</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. OTHER PROPERTIES (Single Photo + Details Niche) -->
+      <div class="section-title" style="margin-top: 70px;">
+        <h2>Other Available Properties & Plots</h2>
+        <p>Build your future in the perfect location</p>
+      </div>
+
+      <div class="properties-grid">
+        <div class="property-card">
+          <div class="property-img">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=700&q=80" alt="Apartments">
+          </div>
+          <div class="property-info">
+            <span class="badge" style="background:#e9ecef; color:var(--text-dark);">2/3 BHK Flats</span>
+            <h3>Gateemaan Heights</h3>
+            <p class="location-tag"><i class="fas fa-map-marker-alt" style="color:var(--accent-color);"></i> Lodhan, Chandmaari, Varanasi</p>
+            <p>Modern residential apartment units with lift facility and ventilated balconies.</p>
+            <div class="property-meta">
+              <span style="font-weight: 700; color: var(--accent-color);">Possession Soon</span>
+              <a href="contact.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-img">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80" alt="Plots">
+          </div>
+          <div class="property-info">
+            <span class="badge" style="background:#e9ecef; color:var(--text-dark);">Freehold Land</span>
+            <h3>Chandmaari Smart Plots</h3>
+            <p class="location-tag"><i class="fas fa-map-marker-alt" style="color:var(--accent-color);"></i> Near Ring Road, Varanasi</p>
+            <p>Ready-to-build residential plots with immediate registry and mutation facility.</p>
+            <div class="property-meta">
+              <span style="font-weight: 700; color: var(--accent-color);">Selling Fast</span>
+              <a href="contact.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-img">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=700&q=80" alt="Villas">
+          </div>
+          <div class="property-info">
+            <span class="badge" style="background:#e9ecef; color:var(--text-dark);">Luxury Duplex</span>
+            <h3>Shree Enclave Villas</h3>
+            <p class="location-tag"><i class="fas fa-map-marker-alt" style="color:var(--accent-color);"></i> Airport Road, Varanasi</p>
+            <p>Independent duplex villas with modular kitchen setup and rooftop terrace.</p>
+            <div class="property-meta">
+              <span style="font-weight: 700; color: var(--accent-color);">Booking Open</span>
+              <a href="contact.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">Enquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo-text" style="margin-bottom: 15px;">श्री <span>Gateemaan</span></div>
+        <p>Quality humari pehchaan hai, aur vishwas humari taakat.</p>
+        <div class="social-links">
+          <a href="https://instagram.com/shreegateemaan" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com/ShreeGateemaanBuilders" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="projects.html">Luxury Duplex</a></li>
+          <li><a href="projects.html">Residential Plots</a></li>
+          <li><a href="projects.html">Modern Villas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Office Location</h4>
+        <p>Aaraji no: 688, Rudraksh Colony, Near Om Vilas, Lodhan, Chandmaari, Varanasi - 221003</p>
+        <p>+91 8881858088</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2026 Shree Gateemaan Builders. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/918881858088" target="_blank" class="floating-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

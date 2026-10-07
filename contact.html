@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Shree Gateemaan Builders</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container navbar">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="logo.jpeg" alt="Shree Gateemaan Logo" class="logo-img" onerror="this.style.display='none'">
+          <div class="logo-text">श्री <span>Gateemaan</span></div>
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="btn btn-primary" style="padding: 8px 18px;">Enquire Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get In Touch</h2>
+        <p>We are here to assist your property journey in Varanasi</p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Lead Capture Form -->
+        <div class="contact-card">
+          <h3 style="margin-bottom: 20px; color: var(--primary-color);">Send an Enquiry</h3>
+          <form id="leadForm">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" required placeholder="e.g. Ramesh Kumar">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" required placeholder="+91 98765 43210">
+            </div>
+            <div class="form-group">
+              <label for="projectType">Interested Property</label>
+              <select id="projectType">
+                <option value="Duplex Villa">Luxury Duplex Villa</option>
+                <option value="Apartment">Residential Apartment</option>
+                <option value="Plot">Residential Plot</option>
+                <option value="General Enquiry">General Consultation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="msg">Message / Requirements</label>
+              <textarea id="msg" rows="4" placeholder="Tell us your budget, location preferences..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Details</button>
+          </form>
+        </div>
+
+        <!-- Office Details & Live Map -->
+        <div class="map-card">
+          <h3 style="margin-bottom: 20px; color: var(--primary-color);">Head Office & Site</h3>
+          <p style="margin-bottom: 12px;">
+            <strong><i class="fas fa-map-marker-alt" style="color:var(--accent-color);"></i> Address:</strong><br>
+            Aaraji no: 688, Rudraksh Colony, Near Om Vilas, Lodhan, Chandmaari, Varanasi - 221003
+          </p>
+          <p style="margin-bottom: 12px;">
+            <strong><i class="fas fa-phone-alt" style="color:var(--accent-color);"></i> Phone / WhatsApp:</strong><br>
+            <a href="tel:+918881858088" style="color: var(--accent-color); font-weight: 600;">+91 8881858088</a>
+          </p>
+          <p style="margin-bottom: 15px;">
+            <strong><i class="fas fa-clock" style="color:var(--accent-color);"></i> Working Hours:</strong><br>
+            Mon - Sun: 09:30 AM - 07:00 PM
+          </p>
+
+          <!-- Embedded Responsive Google Map (Chandmaari, Varanasi area placeholder) -->
+          <div class="map-container">
+            <iframe 
+              src="https://maps.google.com/maps?q=Chandmaari%20Varanasi&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+              loading="lazy" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo-text" style="margin-bottom: 15px;">श्री <span>Gateemaan</span></div>
+        <p>Quality humari pehchaan hai, aur vishwas humari taakat.</p>
+        <div class="social-links">
+          <a href="https://instagram.com/shreegateemaan" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com/ShreeGateemaanBuilders" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="projects.html">Luxury Duplex</a></li>
+          <li><a href="projects.html">Residential Plots</a></li>
+          <li><a href="projects.html">Modern Villas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Office Location</h4>
+        <p>Aaraji no: 688, Rudraksh Colony, Near Om Vilas, Lodhan, Chandmaari, Varanasi - 221003</p>
+        <p>+91 8881858088</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2026 Shree Gateemaan Builders. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/918881858088" target="_blank" class="floating-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
