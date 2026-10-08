@@ -277,9 +277,11 @@ header {
 .carousel-container {
   position: relative;
   width: 100%;
-  height: 440px;
+  aspect-ratio: 16 / 9; /* Modern landscape format */
+  height: auto;
+  max-height: 520px;
   overflow: hidden;
-  background-color: #000;
+  background-color: #121417;
 }
 
 .carousel-slide {
@@ -299,7 +301,8 @@ header {
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .carousel-btn {
