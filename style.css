@@ -274,14 +274,19 @@ header {
   border: 1px solid var(--border-color);
 }
 
+/* ========================================================
+   MAIN FEATURED CAROUSEL - AUTO-FIT (NO ZOOM / NO CROP)
+   ======================================================== */
 .carousel-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Modern landscape format */
-  height: auto;
-  max-height: 520px;
+  aspect-ratio: 16 / 9; /* Responsive modern aspect ratio */
+  max-height: 500px;
   overflow: hidden;
-  background-color: #121417;
+  background-color: #0d0f12; /* Clean dark neutral backdrop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-slide {
@@ -291,7 +296,10 @@ header {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-slide.active {
@@ -299,10 +307,14 @@ header {
 }
 
 .carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Photo bilkul zoom nahi hogi, puri clear dikhegi */
   object-position: center;
+  margin: auto;
+  display: block;
 }
 
 .carousel-btn {
@@ -391,69 +403,166 @@ header {
   color: var(--text-dark);
 }
 
+
 /* ========================================================
-   STANDARD PROPERTY CARDS
+   UNIVERSAL AUTO-FIT CARD & IMAGE SYSTEM
    ======================================================== */
+
+/* Grid layout with equal row heights */
 .properties-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
+  align-items: stretch; /* Sabhi cards ek samaan unchai me rahenge */
 }
 
+/* Card container */
 .property-card {
   background: var(--white);
   border-radius: 8px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.property-card:hover {
-  transform: translateY(-6px);
-}
-
-.property-img {
-  height: 220px;
+/* Photo Wrapper - Automatic aspect ratio (16:9 standard card ratio) */
+.property-img,
+.card-carousel {
   width: 100%;
+  aspect-ratio: 16 / 10; /* Har photo ko automatic uniform box dega */
   overflow: hidden;
+  background-color: #1a1c20; /* Blank/loading space ke liye clean neutral dark */
+  flex-shrink: 0;
   position: relative;
 }
 
-.property-img img {
+/* Kisi bhi image ko bina stretch ya distortion ke fit karna */
+.property-img img,
+.card-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Har photo frame me auto-crop hokar clean fit hogi */
+  object-position: center;
+  display: block;
+}
+
+/* Content Area - Auto-align text and bottom buttons */
+.property-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Bottom Meta & Buttons alignment */
+.property-meta {
+  margin-top: auto; /* Buttons aur badges hamesha bottom par ek seedh me lock rahenge */
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Card Slider Box */
+.card-carousel {
+  position: relative;
+  width: 100%;
+  height: 240px; /* Card image height */
+  overflow: hidden;
+  background-color: #121417;
+}
+
+.card-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.card-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  object-position: center;
 }
 
-.property-card:hover .property-img img {
-  transform: scale(1.06);
-}
-
-.property-info {
-  padding: 20px;
-}
-
-.property-info h3 {
-  font-size: 1.25rem;
-  margin-bottom: 8px;
-  color: var(--primary-color);
-}
-
-.location-tag {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-}
-
-.property-meta {
+/* Reusable Nav Buttons for Cards */
+.card-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18, 20, 23, 0.7);
+  color: var(--white);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-color);
-  padding-top: 15px;
-  margin-top: 12px;
   align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  z-index: 5;
+}
+
+.card-carousel-btn:hover {
+  background: var(--accent-color);
+}
+
+.card-carousel-btn.prev {
+  left: 10px;
+}
+
+.card-carousel-btn.next {
+  right: 10px;
+}
+
+/* Dots Indicator for Cards */
+.card-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+}
+
+.card-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.card-dot.active {
+  background: var(--accent-color);
+  width: 18px;
+  border-radius: 4px;
+}
+
+/* Property Info Content */
+.property-info {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 /* ========================================================

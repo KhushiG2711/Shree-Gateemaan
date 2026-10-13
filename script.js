@@ -2,73 +2,106 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mobile Hamburger Toggle
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
-
   if (hamburger && navLinks) {
     hamburger.addEventListener("click", () => {
       navLinks.classList.toggle("show");
     });
   }
 
-  // Active Link Highlighting based on URL
+  // Active Nav Link
   const currentPath = window.location.pathname.split("/").pop();
-  const navAnchors = document.querySelectorAll(".nav-links a");
-  navAnchors.forEach(link => {
+  document.querySelectorAll(".nav-links a").forEach(link => {
     if (link.getAttribute("href") === currentPath || (currentPath === "" && link.getAttribute("href") === "index.html")) {
       link.classList.add("active");
     }
   });
 
-  // Featured Project Image Carousel (Projects Page)
-  const slides = document.querySelectorAll(".carousel-slide");
-  const prevBtn = document.getElementById("prevSlide");
-  const nextBtn = document.getElementById("nextSlide");
-  const dotsContainer = document.getElementById("carouselDots");
-  let currentSlide = 0;
+  // ========================================================
+  // REUSABLE CAROUSEL INITIALIZER (For Any Slider on Page)
+  // ========================================================
+  function initCarousel(containerSelector, slideSelector, prevBtnSelector, nextBtnSelector, dotsContainerSelector) {
+    const containers = document.querySelectorAll(containerSelector);
 
-  if (slides.length > 0) {
-    // Generate indicator dots dynamically
-    slides.forEach((_, idx) => {
-      const dot = document.createElement("div");
-      dot.classList.add("indicator-dot");
-      if (idx === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => goToSlide(idx));
-      dotsContainer.appendChild(dot);
+    containers.forEach((container) => {
+      const slides = container.querySelectorAll(slideSelector);
+      const prevBtn = container.querySelector(prevBtnSelector);
+      const nextBtn = container.querySelector(nextBtnSelector);
+      const dotsBox = container.querySelector(dotsContainerSelector);
+
+      if (slides.length <= 1) {
+        if (prevBtn) prevBtn.style.display = "none";
+        if (nextBtn) nextBtn.style.display = "none";
+        return;
+      }
+
+      let currentIndex = 0;
+
+      // Generate dots automatically
+      if (dotsBox) {
+        dotsBox.innerHTML = "";
+        slides.forEach((_, i) => {
+          const dot = document.createElement("span");
+          dot.classList.add(containerSelector === ".carousel-container" ? "indicator-dot" : "card-dot");
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", (e) => {
+            e.stopPropagation();
+            goToSlide(i);
+          });
+          dotsBox.appendChild(dot);
+        });
+      }
+
+      const dots = dotsBox ? dotsBox.children : [];
+
+      function updateSlide() {
+        slides.forEach((slide, idx) => {
+          slide.classList.toggle("active", idx === currentIndex);
+        });
+        if (dots.length > 0) {
+          Array.from(dots).forEach((dot, idx) => {
+            dot.classList.toggle("active", idx === currentIndex);
+          });
+        }
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlide();
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlide();
+      }
+
+      function goToSlide(idx) {
+        currentIndex = idx;
+        updateSlide();
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          nextSlide();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          prevSlide();
+        });
+      }
     });
-
-    const dots = document.querySelectorAll(".indicator-dot");
-
-    function updateCarousel() {
-      slides.forEach((slide, idx) => {
-        slide.classList.toggle("active", idx === currentSlide);
-      });
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle("active", idx === currentSlide);
-      });
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      updateCarousel();
-    }
-
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      updateCarousel();
-    }
-
-    function goToSlide(idx) {
-      currentSlide = idx;
-      updateCarousel();
-    }
-
-    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-
-    // Optional: Auto slide every 5 seconds
-    setInterval(nextSlide, 5000);
   }
 
-  // Lead Form Handling
+  // Initialize Top Flagship Showcase Carousel
+  initCarousel(".carousel-container", ".carousel-slide", "#prevSlide", "#nextSlide", "#carouselDots");
+
+  // Initialize All Card Carousels in Grid (Runs on all cards automatically)
+  initCarousel(".card-carousel", ".card-slide", ".card-carousel-btn.prev", ".card-carousel-btn.next", ".card-indicators");
+
+  // Lead Form
   const leadForm = document.getElementById("leadForm");
   if (leadForm) {
     leadForm.addEventListener("submit", (e) => {
