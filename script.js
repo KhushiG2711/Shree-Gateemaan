@@ -102,12 +102,27 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousel(".card-carousel", ".card-slide", ".card-carousel-btn.prev", ".card-carousel-btn.next", ".card-indicators");
 
   // Lead Form
-  const leadForm = document.getElementById("leadForm");
-  if (leadForm) {
-    leadForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Dhanyawaad! Shree Gateemaan Builders ki team aapse jald hi sampark karegi.");
-      leadForm.reset();
-    });
-  }
+   // WhatsApp Lead Form Redirect
+const leadForm = document.getElementById("leadForm");
+if (leadForm) {
+  leadForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const property = document.getElementById("projectType").value;
+    const msg = document.getElementById("msg").value.trim();
+
+    const textMessage = `*New Property Enquiry - Shree Gateemaan*%0A%0A` +
+                        `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                        `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
+                        `🏠 *Property:* ${encodeURIComponent(property)}%0A` +
+                        `💬 *Message:* ${encodeURIComponent(msg || "N/A")}`;
+
+    const whatsappURL = `https://wa.me/918881858088?text=${textMessage}`;
+    window.open(whatsappURL, "_blank");
+
+    leadForm.reset();
+  });
+}
 });
